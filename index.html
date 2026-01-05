@@ -1,217 +1,510 @@
 <!DOCTYPE html>
-<html lang="zh_CN">
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
-    <title>粪坑拾豆</title>
-    <link rel="stylesheet" href="./assets/17674425521750.7109020606708157.css">
-<link rel="stylesheet" href="./assets/17674425521750.9751488531509493.css">
-<link rel="stylesheet" href="./assets/17674425521750.8290152067284476.css">
-<link rel="stylesheet" href="./assets/17674425521750.049826279909108484.css">
-<link rel="stylesheet" href="./assets/17674425521750.5195584734803568.css">
-<link rel="stylesheet" href="./assets/17674425521750.46248972399439314.css">
-<link rel="stylesheet" href="./assets/17674425521750.2706148280468278.css">
-<link rel="stylesheet" href="./assets/17674425521750.8039677138193676.css">
-<link rel="stylesheet" href="./assets/17674425521760.3304300140600511.css">
-<link rel="stylesheet" href="./assets/17674425521760.6472915694820822.css">
-<link rel="stylesheet" href="./assets/17674425521760.9362601184060343.css">
-<link rel="stylesheet" href="./assets/17674425521760.6980123485747249.css">
-<link rel="stylesheet" href="./assets/17674425521760.05434826806546622.css">
-<link rel="stylesheet" href="./assets/17674425521760.7620636803620614.css">
-<link rel="stylesheet" href="./assets/17674425521760.7958065295947784.css">
-<link rel="stylesheet" href="./assets/17674425521760.5304805708055336.css">
-<link rel="stylesheet" href="./assets/17674425521760.262951500314593.css">
-<link rel="stylesheet" href="./assets/17674425521760.36955304165573755.css">
-<link rel="stylesheet" href="./assets/17674425521760.24730946240822227.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>共创工作台 | 数字化工具集</title>
+  <style>
+    :root {
+      --bg: #0b1021;
+      --card: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #6be5c8;
+      --accent-2: #70a6ff;
+      --text: #e8ecf7;
+      --muted: #9fb3d3;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    }
 
-    <style>
-        #page-content,
-        #js_article_bottom_bar,
-        .__page_content__ {
-            max-width: 667px;
-            margin: 0 auto;
-        }
-        img {
-            max-width: 100%;
-        }
-        .sns_opr_btn::before {
-            width: 16px;
-            height: 16px;
-            margin-right: 3px;
-        }
-    </style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(92, 203, 255, 0.12), transparent 35%),
+        radial-gradient(circle at 80% 0%, rgba(108, 229, 200, 0.14), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 16, 33, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.4px;
+      text-decoration: none;
+    }
+
+    .logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #6be5c8, #70a6ff);
+      display: grid;
+      place-items: center;
+      color: #0b1021;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .text-link {
+      color: var(--text);
+      text-decoration: underline;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .primary-btn {
+      background: linear-gradient(120deg, #70a6ff, #6be5c8);
+      color: #0b1021;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 50px rgba(112, 166, 255, 0.3);
+    }
+
+    main {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 60px 20px 80px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      margin: 0 0 18px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0 0 28px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .hero-visual {
+      position: relative;
+      background: linear-gradient(140deg, rgba(112, 166, 255, 0.16), rgba(107, 229, 200, 0.12));
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .glow {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      filter: blur(90px);
+      background: rgba(112, 166, 255, 0.28);
+      top: -20px;
+      right: -20px;
+      opacity: 0.6;
+    }
+
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tile {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .tile small {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      font-size: 12px;
+    }
+
+    .tile strong {
+      font-size: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(107, 229, 200, 0.12);
+      color: #b8ffe8;
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 18px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 18px;
+      display: grid;
+      gap: 10px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(107, 229, 200, 0.4);
+    }
+
+    .card .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(112, 166, 255, 0.16);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .cta-band {
+      margin-top: 64px;
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid var(--card-border);
+      background: linear-gradient(135deg, rgba(112, 166, 255, 0.16), rgba(107, 229, 200, 0.14));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      align-items: center;
+    }
+
+    .cta-band h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .cta-band p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 12px 50px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      header {
+        position: static;
+      }
+    }
+  </style>
 </head>
-<body class="zh_CN wx_wap_page 
-
-                                            wx_wap_desktop_fontsize_2    mm_appmsg
- comment_feature
- discuss_tab appmsg_skin_default appmsg_style_default ">
-
-
-<div id="js_article" style="position:relative;" class="rich_media">
-  
-  
-  
-  <div id="js_base_container" class="rich_media_inner">
-    
-    
-    
-<div class="wx_row_immersive_stream_wrap" id="js_row_immersive_stream_wrap">
-  
-    <div id="js_row_immersive_cover_img">
-    <img src="./assets/17674425521730.2065317676116052.jpg" alt="cover_image" class="wx_follow_avatar_pic">
-  </div>
-    <div id="js_row_immersive_stream_mask" class="wx_row_immersive_stream_mask"></div>
-</div>
-
-    
-    <div id="page-content" class="rich_media_area_primary" style="">
-      <div class="rich_media_area_primary_inner">
-        
-        
-        
-        
-        
-        
-                
-        
-
-        <div id="img-content" class="rich_media_wrp">
-          
-          <h1 class="rich_media_title " id="activity-name">
-粪坑拾豆</h1>
-          <div id="meta_content" class="rich_media_meta_list">
-                                      <span id="copyright_logo" class="wx_tap_link js_wx_tap_highlight rich_media_meta icon_appmsg_tag appmsg_title_tag weui-wa-hotarea">原创</span>
-                                                      <span class="rich_media_meta rich_media_meta_text">
-                                      金不换
-                                  </span>
-                                      
-                        <span class="rich_media_meta rich_media_meta_nickname" id="profileBt">
-              <a href="javascript:void(0);" class="wx_tap_link js_wx_tap_highlight weui-wa-hotarea" id="js_name">
-                金渐成              </a>
-              
-              <div id="js_profile_card"></div>
-            </span>
-            
-            <span id="meta_content_hide_info" class="">
-              <em id="publish_time" class="rich_media_meta rich_media_meta_text">2022年11月06日 21:18</em>
-              <em id="js_ip_wording_wrp" class="rich_media_meta rich_media_meta_text" style="display: none;"><span id="js_a11y_op_ip_wording" aria-hidden="true"></span><span aria-hidden="true" id="js_ip_wording"></span></em>
-              <em id="js_title_modify_wrp" class="rich_media_meta rich_media_meta_text" role="option" aria-labelledby="js_a11y_op_title_modify js_title_modify" style="display: none;"><span aria-hidden="true" id="js_title_modify"></span></em>
-                            <span id="js_star" role="link" tabindex="0" class="wx_tap_link js_wx_tap_highlight rich_media_meta rich_media_meta_link rich_media_meta_star" style="display: none;"></span>
-            </span>
-            
-          </div>
-
-
-          
-          <div id="js_novel_card" class="novel-card js_wx_tap_highlight wx_tap_card" style="display: none;">
-            <div class="novel-info">
-              <div class="novel-cover-group">
-                <div id="js_novel_cover" class="novel-cover">
-                  <img>
-                </div>
-                <div class="novel-meta">
-                  <div id="js_novel_title" class="novel-title"></div>
-                  <div id="js_novel_description" class="novel-description">在小说阅读器中沉浸阅读</div>
-                </div>
-              </div>
-            </div>
-            <div class="arrow-jump-icon"></div>
-          </div>
-
-          
-          
-          
-            
-              
-              
-            
-              
-              
-                
-              
-            
-          
-
-          
-          
-
-          
-                                        
-
-          
-                    
-
-          
-                    
-                    
-          
-          
-          
-          
-          
-                                                            <div class="rich_media_content js_underline_content
-                       autoTypeSetting24psection
-            " id="js_content"><p><span style="font-size: 16px;">说到地产人抄底地产股，反馈较多，很多人抄在山腰上。</span></p><p><span style="font-size: 16px;">这不奇怪，<strong>每个人只能在他的认知水准基础上去思考</strong>。从事地产行业，认知也相对聚焦在地产行业，跨出行业，两眼一抹黑。干脆就在自己熟悉的行业搞一搞。</span></p><p><span style="font-size: 16px;">还是老话：不要和趋势、主流对抗，地产股偶有波动，但整体向下。<br></span></p><p><span style="font-size: 16px;">有些人不信邪，昨天抄底个泰禾、碧桂园，今天抄底个金地、龙湖，结局大多不如意。</span></p><p><span style="font-size: 16px;">干嘛非要在一个趋势下行的板块里找黄金呢，</span><span style="font-size: 16px;">这做法，套用</span><span style="font-size: 16px;"></span><span style="font-size: 16px;">一财经</span><span style="font-size: 16px;">大V</span><span style="font-size: 16px;">朋友的话，叫在“</span><span style="font-size: 16px;">粪坑里找豆子吃”</span><span style="font-size: 16px;">，简称</span><span style="font-size: 16px;">“粪坑拾豆”。</span></p><p><span style="font-size: 16px;">非要去做个波段，精准逃顶套现的话，栽了也要认，在自己能承受的范围内为自己的行为风险买单。</span></p><p><span style="font-size: 16px;">这种操作手法，幸运者是极少数，大部分是炮灰。</span><span style="font-size: 16px;">7</span><span style="font-size: 16px;">年前那波下行</span><span style="font-size: 16px;">，我也想</span><span style="font-size: 16px;">在这类板块</span><span style="font-size: 16px;">捞点机会。</span></p><p><span style="font-size: 16px;">结果嘛，那段时间，</span><span style="font-size: 16px;">朋友们问我</span><span style="font-size: 16px;">有什么缺点，我说自己</span><span style="font-size: 16px;">“</span><span style="font-size: 16px;">缺点钱”</span><span style="font-size: 16px;">~</span></p><p><span style="font-size: 16px;">每个人赚的钱，除了极少数运气成分，本质上都是自己<strong>认知体系的价值变现</strong>。<span style="font-size: 16px;"></span></span></p><p><span style="font-size: 16px;">有的人出生在山上，有的人出生在山脚。生在山上的人能选择躺着、爬山，或者下山；生在山下的人，只能选择爬山。</span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">投资的本质就是寻找事物的真相，真相就是你到底是不是在走上坡路。这也是昨天文章说的，“<span style="color: rgb(34, 34, 34);font-family: system-ui, -apple-system, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif;font-size: 16px;letter-spacing: 0.544px;background-color: rgb(255, 255, 255);">我们在追逐财富的过程，应该是一个升维的过程”。</span></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">... ...<br></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">昨天提到改变命运的一些时刻和抉择，其中有一项“<span style="color: rgb(34, 34, 34);font-family: system-ui, -apple-system, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif;font-size: 16px;letter-spacing: 0.544px;background-color: rgb(255, 255, 255);">娶对的人”。</span></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;"><span style="color: rgb(34, 34, 34);font-family: system-ui, -apple-system, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif;font-size: 16px;letter-spacing: 0.544px;background-color: rgb(255, 255, 255);">那会刚和一学弟聊完天，他麻利地数落他媳妇的不是，末了说准备跟我一块去山居，让他婆娘自个冷静几个月。</span></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;"><span style="color: rgb(34, 34, 34);font-family: system-ui, -apple-system, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif;font-size: 16px;letter-spacing: 0.544px;background-color: rgb(255, 255, 255);">和他很熟，所以我安慰他“人丑就要多读书，虽然不能让你变帅，但能让你接受现实。”</span></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;"><span style="color: rgb(34, 34, 34);font-family: system-ui, -apple-system, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif;font-size: 16px;letter-spacing: 0.544px;background-color: rgb(255, 255, 255);">刚结婚几年，还能吵得动，再过几年，都麻了，哪还有精力吵架。<br></span></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;"><span style="color: rgb(34, 34, 34);font-family: system-ui, -apple-system, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif;font-size: 16px;letter-spacing: 0.544px;background-color: rgb(255, 255, 255);">男女本身思维就有很大的差异。就说健身，男人爱健身，多数是因为怕死；女人爱健身，多数是因为怕丑。</span></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">女人相对擅长吵架作妖，想要的就是两个字：偏爱。男人通常不喜欢吵架，也不主动吵架，但擅长逼女人忍无可忍找他们吵架。</span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">这个社会对男同胞的要求更高、责任更大。男人舍不得给自己花钱，这叫节俭；男人舍不得给女人花钱，这叫抠门。</span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">只有女人和小孩才会说“都怪你”，男人只敢说“都怪我”。</span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">最佳配偶，应该是人生战场的盟友，而不是找个人来满足自己的懒惰行为和巨婴思想。</span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">多数人把精力消磨在内耗上，就很难让自己精进了。</span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;"><span style="font-size: 16px;">人生</span><span style="font-size: 16px;">战场上，</span><span style="font-size: 16px;">有个</span><span style="font-size: 16px;">“正直、</span><span style="font-size: 16px;">有见识、情绪稳定</span><span style="font-size: 16px;">”的</span><span style="font-size: 16px;">盟友</span><span style="font-size: 16px;">，“娶对的人”</span><span style="font-size: 16px;">是男同胞</span><span style="font-size: 16px;">一生最成功的投资。</span></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">至于<span style="font-size: 16px;">“阿姨，我不想努力了</span><span style="font-size: 16px;">”、“嫁给富二代”</span><span style="font-size: 16px;">这种，</span><span style="font-size: 16px;">当段子就好。</span><span style="font-size: 16px;">你确定自己的段位，能搞得</span><span style="font-size: 16px;">定对方？</span></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">这类段子的涌现，只能说明，人世间最大的不平等，除了信息不对称， 还有时间不对称。</span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">... ...<br></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">不出意外的话，明天股市在经历了一周“传闻牛"的急涨之后，会有较大调整，很正常。<br></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">主流情绪认为这次发言不及预期，心态慌了。不排除有些人踏空后，看到有回调的机会，底部放量之后，可能会趁着回调的时间点进场。<br></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">就这样吧，明天见。</span></span></p><p><span style="font-size: 16px;"><span style="font-size: 16px;">这几天我都宅着，有可能上辈子是无家可归，这辈子才这么宅<img data-ratio="1" data-src="https://mmbiz.qpic.cn/mmbiz_png/huVBBp0CicRj7lwOxeTrk2j34FT6iccGrBrHaL4DdrRiaAEAibM4gmjaojfOd0AF8NViacCx3BjUoVmKBgicbJRnCyKQ/640?wx_fmt=png" data-type="png" data-w="20" style="display:inline-block;width:20px;vertical-align:text-bottom;" src="./assets/17674425518680.21771749059850298.png"></span></span></p><p style="display: none;"><mp-style-type data-value="3"></mp-style-type></p></div>
-          
-        </div>
-                        
-                
-        
-        
-         <div id="font_pannel_area"></div>
-        
-        
-
-        
-        <div id="js_temp_bottom_area" class="rich_media_tool_area">
-          
-<div class="rich_media_tool__wrp">
-    <div class="rich_media_tool">
-    
-                  <div class="rich_media_info weui-flex ">
-      
-            
-            
-          </div>
-  </div>
-  </div>
-
-        </div>
-
-
-                
-              </div>
-    </div>
-
-    <div class="rich_media_area_primary sougou" id="sg_tj" style="display:none"></div>
-
-    
-    <div class="rich_media_area_extra">
-      <div class="rich_media_area_extra_inner">
-        
-        <div id="page_bottom_area"></div>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="#">
+        <span class="logo">WB</span>
+        共创工作台
+      </a>
+      <div class="nav-links">
+        <a href="#features">产品能力</a>
+        <a href="#use-cases">场景</a>
+        <a href="#design">体验规范</a>
+        <a href="#cta">立即体验</a>
       </div>
-    </div>
+      <a class="primary-btn" href="#cta">预约演示</a>
+    </nav>
+  </header>
 
-    
-    
-  </div>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="pill">面向团队的数字化工作平台</div>
+        <h1>让每一位成员拥有属于自己的工作台</h1>
+        <p>以场景为中心，将数据、流程、视图、组件与权限集中到统一的个人工作台中。支持各部门按需定制，让业务协作更高效、更透明。</p>
+        <div class="hero-cta">
+          <a class="primary-btn" href="#features">查看能力</a>
+          <a class="text-link" href="#use-cases">成功案例</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="glow"></div>
+        <div class="visual-grid">
+          <div class="tile">
+            <small>工作台视图</small>
+            <strong>4 种模板</strong>
+            <span class="tag">仪表盘 / 数据表 / 看板 / 队列</span>
+          </div>
+          <div class="tile">
+            <small>场景连接</small>
+            <strong>20+ 业务组件</strong>
+            <span class="tag">审批、CRM、知识库、自动化</span>
+          </div>
+          <div class="tile">
+            <small>权限策略</small>
+            <strong>精细化</strong>
+            <span class="tag">成员、角色、数据范围</span>
+          </div>
+          <div class="tile">
+            <small>跨终端</small>
+            <strong>移动 / Web</strong>
+            <span class="tag">实时同步、暗色模式</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  
-  
+    <section id="features" style="margin-bottom: 50px;">
+      <div class="section-title">
+        <h2>核心能力</h2>
+        <p>可视化配置、快速上线，满足不同部门的个性化工作方式。</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">A</div>
+          <h3>多视图协作</h3>
+          <p>表格、看板、日历与甘特视图自由切换，自动联动筛选、排序与分组规则。</p>
+          <div class="tag-list">
+            <span class="tag">可拖拽字段</span><span class="tag">多维过滤</span><span class="tag">实时同步</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon">B</div>
+          <h3>组件化工作台</h3>
+          <p>常用 KPI、待办、快捷入口、公告、日程与表单组件按需拼装，5 分钟搭建个人首页。</p>
+          <div class="tag-list">
+            <span class="tag">可视化布局</span><span class="tag">拖拽排序</span><span class="tag">模板库</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon">C</div>
+          <h3>流程与自动化</h3>
+          <p>内置审批流、机器人任务与提醒。支持 webhook、企业微信/飞书消息推送。</p>
+          <div class="tag-list">
+            <span class="tag">零代码编排</span><span class="tag">触发器</span><span class="tag">多渠道通知</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon">D</div>
+          <h3>安全权限</h3>
+          <p>空间、工作台、数据行三级权限；审计日志、IP 白名单与 SSO 提升安全性。</p>
+          <div class="tag-list">
+            <span class="tag">RBAC</span><span class="tag">审计</span><span class="tag">数据脱敏</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section id="use-cases" style="margin-bottom: 50px;">
+      <div class="section-title">
+        <h2>典型场景</h2>
+        <p>覆盖运营、销售、交付、研发的全链路需求。</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">S</div>
+          <h3>销售工作台</h3>
+          <p>线索池、客户池与合同回款视图一目了然，自动分配跟进人与提醒。</p>
+          <div class="tag-list"><span class="tag">CRM 集成</span><span class="tag">回款预警</span><span class="tag">绩效看板</span></div>
+        </div>
+        <div class="card">
+          <div class="icon">O</div>
+          <h3>运营工作台</h3>
+          <p>活动数据看板、用户分层与增长实验统一管理，指标自动对齐。</p>
+          <div class="tag-list"><span class="tag">实时大屏</span><span class="tag">A/B 实验</span><span class="tag">素材库</span></div>
+        </div>
+        <div class="card">
+          <div class="icon">D</div>
+          <h3>交付工作台</h3>
+          <p>项目排期、里程碑、风险与问题列表集中展示，自动同步客户沟通纪要。</p>
+          <div class="tag-list"><span class="tag">甘特图</span><span class="tag">风险预警</span><span class="tag">文件协同</span></div>
+        </div>
+        <div class="card">
+          <div class="icon">R</div>
+          <h3>研发工作台</h3>
+          <p>需求、缺陷与发布单双向关联，支持与 Git、Jira、飞书多工具互通。</p>
+          <div class="tag-list"><span class="tag">迭代进度</span><span class="tag">自动化测试</span><span class="tag">多工具集成</span></div>
+        </div>
+      </div>
+    </section>
 
+    <section id="design" style="margin-bottom: 50px;">
+      <div class="section-title">
+        <h2>体验设计</h2>
+        <p>一致、可复用的设计语言，保证跨端体验连贯。</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">UI</div>
+          <h3>模块化布局</h3>
+          <p>顶栏、导航、信息区、操作区的通用规范，支撑快速组合与复用。</p>
+          <div class="tag-list"><span class="tag">系统化</span><span class="tag">响应式</span></div>
+        </div>
+        <div class="card">
+          <div class="icon">DS</div>
+          <h3>设计系统</h3>
+          <p>色板、文字、图标与交互动效均有规范，暗色模式默认支持。</p>
+          <div class="tag-list"><span class="tag">暗色模式</span><span class="tag">动效指引</span></div>
+        </div>
+        <div class="card">
+          <div class="icon">AC</div>
+          <h3>无障碍</h3>
+          <p>高对比配色、焦点状态、键盘访问与语义化标记，让更多成员无障碍使用。</p>
+          <div class="tag-list"><span class="tag">WCAG</span><span class="tag">键盘友好</span></div>
+        </div>
+      </div>
+    </section>
 
-</div>
-<div id="js_article_bottom_bar" class="bottom_bar_wrp js_temp_bottom_bar">
-      <div id="article_bottom_bar_area"></div>
-    </div>
+    <section id="cta" class="cta-band">
+      <div>
+        <h3>立即搭建你的工作台</h3>
+        <p>5 分钟完成首个工作台，覆盖团队常用的流程、表单、仪表盘与自动化。</p>
+      </div>
+      <div class="hero-cta">
+        <a class="primary-btn" href="#">免费体验</a>
+        <a class="text-link" href="#">下载方案 PDF</a>
+      </div>
+    </section>
+  </main>
 
-
-<!-- 评论数据 -->
-
+  <footer>
+    共创工作台 © 2024 · 统一工作平台，赋能每个团队成员
+  </footer>
 </body>
 </html>
